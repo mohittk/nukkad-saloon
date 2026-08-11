@@ -1,0 +1,421 @@
+@import "tailwindcss";
+
+:root {
+  --background: #100d0a;
+  --foreground: #fff4df;
+  --font-geist-sans: Arial, Helvetica, sans-serif;
+  --font-geist-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
+}
+
+body {
+  min-width: 320px;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero-stack {
+  justify-content: flex-start;
+  min-height: calc(100vh - 5rem);
+  padding-top: clamp(0.75rem, 4vh, 2.5rem);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(255, 218, 151, 0.42);
+  border-radius: 999px;
+  background: rgba(18, 13, 9, 0.52);
+  padding: 0.48rem 0.86rem;
+  color: #ffe8bc;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(8px);
+}
+
+.status-dot {
+  width: 0.58rem;
+  height: 0.58rem;
+  border-radius: 999px;
+  background: #86efac;
+  box-shadow: 0 0 0 0 rgba(134, 239, 172, 0.65);
+  animation: pulse 1.8s ease-out infinite;
+}
+
+.status-separator {
+  width: 1px;
+  height: 0.95rem;
+  background: rgba(255, 232, 188, 0.36);
+}
+
+.clock {
+  min-width: 6.9rem;
+  color: #fff4df;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.listener-count {
+  min-width: 5.8rem;
+  color: #d8ffe1;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.brand-lockup {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.75rem, 1.7vw, 1.2rem);
+  padding-inline: 0.5rem;
+}
+
+.brand-lockup::after {
+  position: absolute;
+  inset: 28% 4% -10%;
+  z-index: -1;
+  content: "";
+  background: radial-gradient(ellipse at center, rgba(15, 9, 6, 0.52), transparent 68%);
+  pointer-events: none;
+}
+
+.tagline {
+  display: inline-block;
+  max-width: min(92vw, 42rem);
+  padding-inline: 0.25rem;
+  text-shadow:
+    0 1px 0 rgba(39, 17, 9, 0.98),
+    0 3px 12px rgba(0, 0, 0, 0.95),
+    0 0 26px rgba(0, 0, 0, 0.75);
+}
+
+.radio-panel {
+  margin-top: auto;
+  margin-bottom: clamp(0.4rem, 2vh, 1.25rem);
+  width: min(36rem, 100%);
+}
+
+.radio-player {
+  display: grid;
+  grid-template-columns: 3.2rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.82rem;
+  width: 100%;
+  border: 1px solid rgba(255, 211, 144, 0.2);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(65, 24, 16, 0.82), rgba(30, 12, 9, 0.88)),
+    rgba(16, 12, 8, 0.78);
+  padding: 0.64rem 0.78rem;
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px) saturate(1.12);
+}
+
+.radio-shell {
+  width: 100%;
+}
+
+.saloon-atmosphere {
+  display: flex;
+  width: min(42rem, 100%);
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(0.1rem, 1vh, 0.65rem);
+  pointer-events: none;
+}
+
+.live-dot {
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 999px;
+  background: #5dff93;
+  box-shadow:
+    0 0 0 0.18rem rgba(93, 255, 147, 0.18),
+    0 0 18px rgba(93, 255, 147, 0.68);
+  animation: livePulse 1.5s ease-out infinite;
+}
+
+.quote-flight {
+  min-width: 0;
+  max-width: 100%;
+  color: #ffe4ae;
+  font-size: clamp(1.45rem, 2.75vw, 2.15rem);
+  font-weight: 900;
+  line-height: 1.25;
+  text-align: center;
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.72),
+    0 0 18px rgba(255, 183, 94, 0.24);
+  animation: quoteFloat 4.2s ease-in-out both;
+}
+
+.album-art {
+  width: 3.2rem;
+  height: 3.2rem;
+  border: 1px solid rgba(255, 232, 188, 0.42);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(255, 209, 139, 0.2), rgba(54, 20, 13, 0.15)),
+    url("/nukkad-saloon-hero-single-tubelight-removed-2x.png") center / cover;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+}
+
+.track-info {
+  min-width: 0;
+  text-align: left;
+}
+
+.track-title {
+  overflow: hidden;
+  color: #fff0cb;
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track-artist {
+  margin-top: 0.15rem;
+  color: rgba(255, 232, 188, 0.66);
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.progress-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 0.48rem;
+}
+
+.player-controls {
+  display: grid;
+  grid-template-columns: 1.8rem 2.9rem 1.8rem;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.player-button {
+  display: grid;
+  width: 2.9rem;
+  height: 2.9rem;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: #fff0cb;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+}
+
+.player-button:focus-visible,
+.skip-button:focus-visible,
+.track:focus-visible {
+  outline: 2px solid rgba(255, 209, 139, 0.75);
+  outline-offset: 3px;
+}
+
+.player-button span {
+  width: 0;
+  height: 0;
+  border-bottom: 0.42rem solid transparent;
+  border-top: 0.42rem solid transparent;
+  margin-left: 0.16rem;
+  border-left: 0.66rem solid #35150d;
+}
+
+.player-button.is-playing span {
+  width: 0.68rem;
+  height: 0.82rem;
+  margin-left: 0;
+  border: 0;
+  background:
+    linear-gradient(90deg, #35150d 0 34%, transparent 34% 66%, #35150d 66% 100%);
+}
+
+.skip-button {
+  display: grid;
+  width: 1.8rem;
+  height: 2.2rem;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #ffe8bc;
+  cursor: pointer;
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1;
+  opacity: 0.82;
+}
+
+.skip-button:hover {
+  background: rgba(255, 209, 139, 0.09);
+  opacity: 1;
+}
+
+.track {
+  --progress: 0%;
+  appearance: none;
+  width: 100%;
+  height: 0.34rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, #ffb75e var(--progress), rgba(255, 244, 223, 0.2) 0);
+  cursor: pointer;
+}
+
+.track::-webkit-slider-thumb {
+  appearance: none;
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 0;
+  border-radius: 999px;
+  background: #ffe8bc;
+  box-shadow: 0 0 0 0.18rem rgba(255, 209, 139, 0.16);
+}
+
+.track::-moz-range-thumb {
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 0;
+  border-radius: 999px;
+  background: #ffe8bc;
+  box-shadow: 0 0 0 0.18rem rgba(255, 209, 139, 0.16);
+}
+
+.time {
+  color: rgba(255, 232, 188, 0.72);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+@keyframes pulse {
+  70% {
+    box-shadow: 0 0 0 0.55rem rgba(134, 239, 172, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(134, 239, 172, 0);
+  }
+}
+
+@keyframes livePulse {
+  70% {
+    box-shadow:
+      0 0 0 0.52rem rgba(93, 255, 147, 0),
+      0 0 18px rgba(93, 255, 147, 0.52);
+  }
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(93, 255, 147, 0),
+      0 0 18px rgba(93, 255, 147, 0.52);
+  }
+}
+
+@keyframes quoteFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0.45rem);
+  }
+  16%,
+  82% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-0.35rem);
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-stack {
+    min-height: calc(100vh - 4rem);
+    padding-top: 0;
+  }
+
+  .radio-panel {
+    margin-top: auto;
+  }
+
+  .radio-player {
+    grid-template-columns: 2.9rem minmax(0, 1fr);
+    gap: 0.7rem;
+    border-radius: 24px;
+  }
+
+  .album-art {
+    width: 2.9rem;
+    height: 2.9rem;
+  }
+
+  .player-controls {
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-top: 0.2rem;
+  }
+
+  .saloon-atmosphere {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: min(24rem, 100%);
+    margin-top: 0;
+  }
+
+  .quote-flight {
+    max-width: 92vw;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .time {
+    font-size: 0.68rem;
+  }
+}
+
+@media (max-width: 900px) and (orientation: portrait) {
+  .hero-stack {
+    gap: 0.85rem;
+  }
+
+  .radio-panel {
+    width: min(34rem, 100%);
+  }
+}
